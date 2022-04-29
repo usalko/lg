@@ -83,6 +83,10 @@ if [ "x$COMMAND" == "xpublish" ]; then
     .venv/bin/twine upload dist/*
 fi
 
+if [ "x$COMMAND" == "xcheck-publish" ]; then
+    .venv/bin/python3 setup.py check -r -s
+fi
+
 if [ "x$COMMAND" == "xmanage" ]; then
     echo "Run manage.py script manage.py $@"
     export DJANGO_SECRET_KEY=$(.venv/bin/python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')
@@ -111,6 +115,6 @@ if [ "x$COMMAND" == "xrun-demo" ]; then
     cd $CURRENT_FOLDER
 fi
 
-AVAILABLE_COMMANDS="run-demo publish manage redeps clean"
+AVAILABLE_COMMANDS="run-demo publish check-publish manage redeps clean"
 echo ''
 [[ $AVAILABLE_COMMANDS =~ (^| )$COMMAND($| ) ]] && echo 'Ok' || echo 'Unknown command: ' "$COMMAND" && echo 'Available commands are: ' "$AVAILABLE_COMMANDS"

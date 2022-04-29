@@ -1,12 +1,13 @@
-=======================
+
+========================================================
 Interface for quick access to the logging functionality
-=======================
+========================================================
 
 The sample:
 
 .. code:: python
 
-    from lg import Loggable
+    from lxg import Loggable
 
     MyClass:
 
